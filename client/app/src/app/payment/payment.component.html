@@ -1,0 +1,76 @@
+<div class="container">
+  <p>
+    <mat-toolbar color="primary">
+      <button aria-label="Example icon-button with menu icon" class="example-icon" mat-icon-button>
+        <mat-icon>payment</mat-icon>
+      </button>
+      <span>Payments</span>
+      <span class="example-spacer"></span>
+      <button (click)="openDialog()" aria-label="Example icon button with a menu icon" color="primary" mat-mini-fab>
+        <mat-icon>add</mat-icon>
+      </button>
+    </mat-toolbar>
+  </p>
+
+  <mat-form-field appearance="standard">
+    <mat-label>Filter</mat-label>
+    <input #input (keyup)="applyFilter($event)" matInput placeholder="Ex. Prateek">
+  </mat-form-field>
+
+  <div class="mat-elevation-z8">
+    <table [dataSource]="dataSource" mat-table matSort>
+
+      <!-- ID Column -->
+      <ng-container matColumnDef="_id">
+        <th *matHeaderCellDef mat-header-cell mat-sort-header> ID</th>
+        <td *matCellDef="let row" mat-cell> {{row._id}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="patient">
+        <th *matHeaderCellDef mat-header-cell mat-sort-header> Patient</th>
+        <td *matCellDef="let row" mat-cell> {{row?.patient?.first_name + " " + row?.patient?.last_name}} </td>
+      </ng-container>
+
+      <!-- Progress Column -->
+      <ng-container matColumnDef="date">
+        <th *matHeaderCellDef mat-header-cell mat-sort-header> Date</th>
+        <td *matCellDef="let row" mat-cell> {{row.date|date}} </td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="charges">
+        <th *matHeaderCellDef mat-header-cell mat-sort-header> Charges</th>
+        <td *matCellDef="let row" mat-cell> {{row.charges|currency : 'INR'}} </td>
+      </ng-container>
+
+      <!-- Fruit Column -->
+      <ng-container matColumnDef="method">
+        <th *matHeaderCellDef mat-header-cell mat-sort-header> Method</th>
+        <td *matCellDef="let row" mat-cell> {{row.method.split("_").join(" ")|uppercase}} </td>
+      </ng-container>
+
+
+      <ng-container matColumnDef="action">
+        <th *matHeaderCellDef mat-header-cell mat-sort-header> Action</th>
+        <td *matCellDef="let row" class="d-flex" mat-cell>
+          <button (click)="editPayment(row)" color="primary" mat-icon-button>
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button (click)="deletePayment(row._id)" color="warn" mat-icon-button>
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
+      <tr *matRowDef="let row; columns: displayedColumns;" mat-row></tr>
+
+      <!-- Row shown when there is no matching data. -->
+      <tr *matNoDataRow class="mat-row">
+        <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+      </tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+  </div>
+</div>

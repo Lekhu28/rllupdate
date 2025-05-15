@@ -1,0 +1,77 @@
+<p-toast></p-toast>
+
+<div class="card">
+  <p-toolbar styleClass="mb-4">
+    <ng-template pTemplate="left">
+      <button (click)="clickAdd()" class="p-button-success mr-2" icon="pi pi-plus" label="New Medicine" pButton
+              pRipple></button>
+    </ng-template>
+  </p-toolbar>
+
+  <p-table #dt [globalFilterFields]="['name', 'description']" [rowHover]="true" [value]="medicines" dataKey="id"
+           responsiveLayout="scroll">
+    <ng-template pTemplate="caption">
+      <div class="text-center m-2">
+        <h3>Medicines</h3>
+      </div>
+      <div class="flex justify-content-between align-items-center">
+        <span class="p-input-icon-left ml-auto mx-2">
+          <i class="pi pi-search"></i>
+          <input (input)="dt.filterGlobal(getEventValue($event), 'contains')" class="w-100" pInputText
+                 placeholder="Search keyword" type="text"/>
+        </span>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+      <tr>
+        <th pSortableColumn="name">Name
+          <p-sortIcon field="name"></p-sortIcon>
+        </th>
+        <th pSortableColumn="description">Description
+          <p-sortIcon field="description"></p-sortIcon>
+        </th>
+        <th>Action</th>
+      </tr>
+    </ng-template>
+    <ng-template let-med pTemplate="body">
+      <tr>
+        <td>{{med.name}}</td>
+        <td>
+          {{med.description}}
+        </td>
+        <td>
+          <button (click)="clickEdit(med)" class="p-button-rounded p-button-success m-2" icon="pi pi-pencil" pButton
+                  pRipple></button>
+          <button (click)="clickDelete(med._id)" class="p-button-rounded p-button-danger m-2" icon="pi pi-trash" pButton
+                  pRipple></button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
+
+<p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
+
+
+<p-dialog [(visible)]="medicineDialog" [modal]="true" [style]="{width: '450px'}" header="Add Medicine" presDialog="true"
+          styleClass="p-fluid">
+
+  <ng-template pTemplate="content">
+    <div class="field">
+      <label for="name">Name</label>
+      <input [(ngModel)]="medicine.name" autofocus id="name" pInputText required type="text"/>
+    </div>
+    <div class="field">
+      <label for="description">description</label>
+      <input [(ngModel)]="medicine.description" id="description" pInputText required type="text"/>
+    </div>
+
+  </ng-template>
+
+
+  <ng-template pTemplate="footer">
+    <button (click)="hideDialog()" class="p-button-text" icon="pi pi-times" label="Cancel" pButton pRipple></button>
+    <button (click)="save()" class="p-button-text" icon="pi pi-check" label="Save" pButton pRipple
+            type="submit"></button>
+  </ng-template>
+</p-dialog>

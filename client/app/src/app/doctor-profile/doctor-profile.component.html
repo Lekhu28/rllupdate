@@ -1,0 +1,83 @@
+<h4 class="modal-title fs-3 m-3 mt-4">Doctor profile page</h4>
+
+<div class="m-3 mainDiv">
+  <form [formGroup]="editForm" autocomplete="off" enctype="multipart/form-data" id="editForm" novalidate>
+    <div class="row flex-nowrap align-items-center mb-4 m-2 g-0">
+      <img alt="" class="img" src="{{ '../../../assets/' + eDoctor._id.profileImg }}"/>
+      <div class="fileinputs">
+        <input (change)="selectFile($event)" class="file" name="profileImg" type="file"/>
+        <div class="fakefile row flex-nowrap align-items-center text-center">
+          <span>Change photo <i aria-hidden="true" class="fa fa-user fs-5 mx-1"></i></span>
+        </div>
+      </div>
+    </div>
+    <div class="row my-2">
+            <span class="w-50">
+                <label class="mx-1 mb-1 fw-bold" for="float-input">First name</label>
+                <input [(ngModel)]="eDoctor._id.firstName"
+                       class="p-inputtext-sm w-100 rounded-pill bg-inp" formControlName="firstName"
+                       id="float-input" pInputText type="text">
+              <!-- <label for="float-input" class="mx-3">First name</label> -->
+            </span>
+      <span class="w-50">
+                <label class="mx-1 mb-1 fw-bold" for="float-input">Last name</label>
+                <input [(ngModel)]="eDoctor._id.lastName"
+                       class="p-inputtext-sm w-100 rounded-pill bg-inp" formControlName="lastName"
+                       id="float-input" pInputText type="text">
+        <!-- <label for="float-input" class="mx-3">Last name</label> -->
+            </span>
+    </div>
+    <span class="w-100 my-2">
+            <label class="mx-1 mb-1 fw-bold" for="float-input">Phone number</label>
+            <input [(ngModel)]="eDoctor._id.phoneNumber" class="p-inputtext-sm w-100 rounded-pill bg-inp" formControlName="phoneNumber"
+                   id="float-input" maxlength="11"
+                   minlength="11" pInputText type="text">
+      <!-- <label for="float-input" class="mx-2">Phone number</label> -->
+        </span>
+    <div class="row my-2">
+            <span class="w-50">
+                <label class="mx-1 mb-1 fw-bold" for="float-input">Age</label>
+                <input [(ngModel)]="eDoctor._id.age"
+                       class="p-inputtext-sm w-100 rounded-pill bg-inp" formControlName="age"
+                       id="float-input" pInputText type="text">
+              <!-- <label for="float-input" class="mx-4">Age</label> -->
+            </span>
+      <span class="w-50">
+                <label class="mx-1 mb-1 fw-bold" for="float-input">Gender</label>
+                <p-dropdown [(ngModel)]="eDoctor._id.gender"
+                            [autoDisplayFirst]="false" [options]="genders" [style]="{'width':'100%'}"
+                            autoWidth="false" class="p-inputtext-sm w-100" formControlName="gender"
+                            inputId="dropdown"
+                            styleClass="inp-form">
+                </p-dropdown>
+        <!-- <label for="dropdown" class="mx-3">Gender</label> -->
+            </span>
+    </div>
+    <span class="w-100 my-2">
+            <label class="mx-1 mb-1 fw-bold" for="float-input">Email</label>
+            <input [(ngModel)]="eDoctor._id.email"
+                   class="p-inputtext-sm w-100 rounded-pill bg-inp" formControlName="email"
+                   id="float-input" pInputText type="text">
+      <!-- <label for="float-input" class="mx-2">Email</label> -->
+        </span>
+    <span class="w-100 my-2">
+            <label class="mx-1 mb-1 fw-bold" for="float-input">Speciality</label>
+            <p-dropdown [(ngModel)]="eDoctor.speciality"
+                        [autoDisplayFirst]="false" [options]="specialities" [style]="{'width':'100%'}"
+                        autoWidth="false" class="p-inputtext-sm w-100" formControlName="speciality" inputId="dropdown"
+                        styleClass="inp-form">
+            </p-dropdown>
+      <!-- <label for="dropdown" class="mx-2">Speciality</label> -->
+        </span>
+    <span class="w-100 my-2">
+            <label class="mx-1 mb-1 fw-bold" for="float-input">Address</label>
+            <input [(ngModel)]="eDoctor._id.address" class="p-inputtext-sm w-100 rounded-pill bg-inp"
+                   formControlName="address" id="float-input"
+                   minlength="3" pInputText type="text">
+      <!-- <label for="float-input" class="mx-2">Address</label> -->
+        </span>
+  </form>
+  <button (click)="update()" [disabled]="editForm.pristine || editForm.invalid" class="btn btn-info mt-3 w-100"
+          type="submit"> Save changes
+  </button>
+</div>

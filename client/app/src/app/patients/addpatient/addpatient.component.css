@@ -1,0 +1,248 @@
+
+body {
+  font-family: 'Varela Round', sans-serif;
+}
+
+#okModal .modal-confirm {
+  color: #636363;
+  width: 325px;
+  font-size: 14px;
+}
+
+#okModal .modal-confirm .modal-content {
+
+  padding: 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: none;
+
+}
+
+#okModal .modal-confirm .modal-header {
+
+  background: #1A6C2D;
+  border-bottom: none;
+  position: relative;
+  text-align: center;
+  margin: -20px -20px 0;
+  border-radius: 5px 5px 0 0;
+  padding: 35px;
+}
+
+#okModal .modal-confirm h4 {
+  text-align: center;
+  font-size: 26px;
+  margin: 30px 0 -15px;
+  color: black;
+}
+
+#okModal .modal-confirm .form-control, #okModal .modal-confirm .btn {
+  min-height: 40px;
+  border-radius: 3px;
+}
+
+#okModal .modal-confirm .close {
+
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  color: #fff;
+  text-shadow: none;
+  opacity: 0.5;
+}
+
+#okModal .modal-confirm .modal-footer {
+  border: none;
+  text-align: center;
+  border-radius: 5px;
+  font-size: 13px;
+}
+
+#okModal .modal-confirm .icon-box {
+  color: #fff;
+  position: absolute;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  top: -70px;
+  width: 95px;
+  height: 95px;
+  border-radius: 50%;
+  z-index: 9;
+  background: #1A6C2D;
+  padding: 15px;
+  text-align: center;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
+}
+
+#okModal .modal-confirm .icon-box i {
+  font-size: 58px;
+  position: relative;
+  top: 3px;
+}
+
+#okModal .modal-confirm .modal-dialog {
+  margin-top: 80px;
+}
+
+#okModal .modal-confirm .btn {
+  color: #fff;
+  border-radius: 4px;
+  background: #1A6C2D;
+  text-decoration: none;
+  transition: all 0.4s;
+  line-height: normal;
+  border: none;
+}
+
+#okModal .modal-confirm .btn:hover, #okModal .modal-confirm .btn:focus {
+  background: #1A6C2D;
+  outline: none;
+}
+
+.trigger-btn {
+  display: inline-block;
+  margin: 100px auto;
+}
+
+/* error model */
+#errorModal #errorModal .modal-confirm {
+  color: #434e65;
+  width: 325px;
+}
+
+#errorModal .modal-confirm .modal-content {
+  padding: 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: none;
+}
+
+#errorModal .modal-confirm .modal-header {
+  background: #e85e6c;
+  border-bottom: none;
+  position: relative;
+  text-align: center;
+  margin: -20px -20px 0;
+  border-radius: 5px 5px 0 0;
+  padding: 35px;
+}
+
+#errorModal .modal-confirm h4 {
+  text-align: center;
+  font-size: 36px;
+  margin: 10px 0;
+  color: black;
+}
+
+#errorModal .modal-confirm .form-control, #errorModal .modal-confirm .btn {
+  min-height: 30px;
+  border-radius: 3px;
+}
+
+#errorModal .modal-confirm .close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  color: #fff;
+  text-shadow: none;
+  opacity: 0.5;
+}
+
+#errorModal .modal-confirm .close:hover {
+  opacity: 0.8;
+}
+
+#errorModal .modal-confirm .icon-box {
+  color: #fff;
+  width: 95px;
+  height: 95px;
+  display: inline-block;
+  border-radius: 50%;
+  z-index: 9;
+  border: 5px solid #fff;
+  padding: 15px;
+  text-align: center;
+}
+
+#errorModal .modal-confirm .icon-box i {
+  font-size: 58px;
+  margin: -2px 0 0 -2px;
+}
+
+#errorModal .modal-confirm.modal-dialog {
+  margin-top: 80px;
+}
+
+#errorModal .modal-confirm .btn, #errorModal .modal-confirm .btn:active {
+  color: #fff;
+  border-radius: 4px;
+  background: #eeb711 !important;
+  text-decoration: none;
+  transition: all 0.4s;
+  line-height: normal;
+  border-radius: 30px;
+  margin-top: 10px;
+  padding: 6px 20px;
+  min-width: 150px;
+  border: none;
+}
+
+#errorModal .modal-confirm .btn:hover, #errorModal .modal-confirm .btn:focus {
+  background: #eda645 !important;
+  outline: none;
+}
+
+.trigger-btn {
+  display: inline-block;
+  margin: 100px auto;
+}
+
+.row.flex-nowrap.align-items-center.mb-4.mx-2 {
+  --bs-gutter-x: 0;
+}
+
+.img {
+  margin-top: 4px !important;
+  width: 80px;
+  height: 60px;
+  border-radius: 50% !important;
+}
+
+div.fileinputs {
+  position: relative;
+}
+
+div.fakefile {
+  position: absolute;
+  top: 0px;
+  left: 30px;
+  z-index: 1;
+  width: 150px;
+  height: 35px;
+  border-radius: 7px;
+  border: 1px solid var(--primary);
+  color: var(--primary);
+  transition: all 0.3s;
+}
+
+div.fakefile:hover, input.file:hover, input[type="file"]:hover {
+  cursor: pointer;
+  background-color: var(--primary);
+  color: white;
+}
+
+input[type="file"] {
+  width: 150px;
+}
+
+input.file {
+  position: relative;
+  text-align: right;
+  opacity: 0;
+  z-index: 2;
+}
+
+.fakefile span {
+  position: absolute;
+}

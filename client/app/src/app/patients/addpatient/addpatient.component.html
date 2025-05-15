@@ -1,0 +1,173 @@
+<app-listpatient></app-listpatient>
+<div class="modal" data-bs-backdrop="static" id="addModal" role="dialog" tabindex="1">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle"><b>Add Patient</b></h5>
+        <button (click)="close()" aria-label="Close" class="close" data-bs-dismiss="modal" type="button">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div style="text-align:center">
+
+          <form [formGroup]="angForm" enctype="multipart/form-data" novalidate>
+            <div class="row flex-nowrap align-items-center mb-4 mx-2 g-0">
+              <img alt="" class="img" src="{{ '../../../assets/'+newPatient.profile_img}}"/>
+              <div class="fileinputs">
+
+                <div class="fakefile row flex-nowrap align-items-center text-center">
+                  <input (change)="onFileSelected($event)" class="file" id="profile_img"
+                         name="profileImg" type="file"/>
+                  <span>Select image <i aria-hidden="true" class="fa fa-user fs-5 mx-1"></i></span>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="row">
+                <div class="col"><input [(ngModel)]="newPatient.first_name" class="form-control" formControlName="fname"
+                                        name="first_name" placeholder="First Name"
+                                        type="text"></div>
+                <div class="col"><input [(ngModel)]="newPatient.last_name" class="form-control" formControlName="lname"
+                                        name="last_name" placeholder="Last Name"
+                                        type="text"></div>
+              </div>
+            </div>
+            <div class="row">
+              <div
+                *ngIf="angForm.controls['fname'].invalid && (angForm.controls['fname'].dirty || angForm.controls['fname'].touched)"
+                class="col alert alert-danger m-3">
+                <div *ngIf="angForm.controls['fname'].errors">
+                  First Name is required.
+                </div>
+              </div>
+              <div
+                *ngIf="angForm.controls['lname'].invalid && (angForm.controls['lname'].dirty || angForm.controls['lname'].touched)"
+                class="col alert alert-danger m-3">
+                <div *ngIf="angForm.controls['lname'].errors">
+                  Last Name is required.
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+
+              <input [(ngModel)]="newPatient.address" class="form-control" formControlName="address" name="address"
+                     placeholder="Address" type="text">
+
+            </div>
+            <div
+              *ngIf="angForm.controls['address'].invalid && (angForm.controls['address'].dirty || angForm.controls['address'].touched)"
+              class="alert alert-danger">
+              <div *ngIf="angForm.controls['address'].errors">
+                Address is required.
+              </div>
+            </div>
+            <div class="form-group">
+
+              <input [(ngModel)]="newPatient.phone_number " class="form-control" formControlName="phone_number" maxlength="11"
+                     minlength="11" name="phone_number" placeholder="Phone Number" type="text"
+              >
+
+            </div>
+            <div
+              *ngIf="angForm.controls['phone_number'].invalid && (angForm.controls['phone_number'].dirty || angForm.controls['phone_number'].touched)"
+              class="alert alert-danger">
+              <div *ngIf="angForm.controls['phone_number'].errors">
+                Phone Number is required and at least 12 number.
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="row">
+                <div class="col"><input [(ngModel)]="newPatient.age" class="form-control" formControlName="age" max="100" min="1"
+                                        placeholder="Age" type="number"></div>
+                <div class="col"><select (change)="selectChangeHandler($event)" class="form-control"
+                                         formControlName="gender">
+                  <option disabled hidden selected value=""> Gender</option>
+                  <option class="px-3" value='male'>male</option>
+                  <option class="px-3" value='female'>female</option>
+                </select></div>
+              </div>
+            </div>
+            <div class="row">
+              <div
+                *ngIf="angForm.controls['age'].invalid && (angForm.controls['age'].dirty || angForm.controls['age'].touched)"
+                class=" col m-3 alert alert-danger">
+                <div *ngIf="angForm.controls['age'].errors">
+                  Age is required.
+                </div>
+              </div>
+              <div
+                *ngIf="angForm.controls['gender'].invalid && (angForm.controls['gender'].dirty || angForm.controls['gender'].touched)"
+                class="col m-3 alert alert-danger">
+                <div *ngIf="angForm.controls['gender'].errors">
+                  Gender is required.
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <button (click)="close()" class="btn btn-secondary col mx-5" data-bs-dismiss="modal"
+                      type="button">Close
+              </button>
+              <button (click)="add()" [disabled]="angForm.pristine || angForm.invalid" class="btn btn-success col mx-5"
+                      type="submit">
+                Add
+              </button>
+
+            </div>
+          </form>
+
+        </div>
+
+      </div>
+      <div class="modal-footer flex-row justify-content-between col-12 ">
+        <!-- <button type="button" class="btn btn-secondary clo-2" data-bs-dismiss="modal"
+            (click)="close()">Close</button>
+
+        <button type="button" class="btn btn-primary col-4" (click)="save()">Add Patient</button> -->
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ////// error model//// -->
+<div aria-hidden="true" class="modal fade" id="errorModal" style="display: none;">
+  <div class="modal-dialog modal-confirm">
+    <div class="modal-content">
+      <div class="modal-header justify-content-center">
+        <!-- <div class="icon-box">
+          <i class="material-icons"></i>
+        </div> -->
+        <button (click)="close()" aria-hidden="true" class="close" data-bs-dismiss="modal" type="button">×</button>
+      </div>
+      <div class="modal-body text-center">
+        <h4>Ooops!</h4>
+        <p>Something went wrong. patient was not uploaded.</p>
+        <p>{{errormessage}}</p>
+        <button (click)="agin()" class="btn btn-danger" data-bs-dismiss="modal">Try Again</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end of error model -->
+<!-- succes model -->
+<div aria-hidden="true" class="modal fade" id="okModal" style="display: none;">
+  <div class="modal-dialog modal-confirm">
+    <div class="modal-content">
+      <div class="modal-header justify-content-center">
+        <!-- <div class="icon-box">
+          <i class="material-icons"></i>
+                    <i class="fa-solid fa-circle-check"></i>
+        </div> -->
+        <button (click)="close()" aria-hidden="true" class="close" data-bs-dismiss="modal" type="button">×</button>
+      </div>
+      <div class="modal-body text-center">
+        <h4 class><b>Great! </b></h4>
+        <p class=" mt-3">Your Patient has been created successfully.</p>
+        <button (click)="return()" class="btn btn-success" data-dismiss="modal"><span>Return</span> <i
+          class="material-icons"></i></button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end of succes model -->

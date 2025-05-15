@@ -1,0 +1,66 @@
+<div id="myModal">
+
+  <form [formGroup]="form" autocomplete="off" enctype="multipart/form-data" id="form" novalidate>
+
+    <div class="field">
+      <label for="date">date</label>
+      <input [(ngModel)]="prescription.date" class="form-control" formControlName="date" max="2022-06-01" min="2022-01-01"
+             type="date"/>
+    </div>
+    <div class="field">
+      <label for="doctor">doctor</label>
+      <p-dropdown [(ngModel)]="prescription.doctor" [options]="doctors" formControlName="doctor"
+                  optionLabel="_id.firstName" optionValue="_id"
+                  placeholder="Select a Doctor">
+      </p-dropdown>
+    </div>
+    <div class="field">
+      <label for="pa">Patient </label>
+      <p-dropdown [(ngModel)]="prescription.patient" [options]="patients" formControlName="patient"
+                  optionLabel="first_name" optionValue="_id"
+                  placeholder="Select a Patient">
+      </p-dropdown>
+    </div>
+
+    <p-table #dt2 [value]="arr">
+      <ng-template pTemplate="header">
+        <tr>
+          <th>mdicine</th>
+          <th>dose</th>
+        </tr>
+      </ng-template>
+      <ng-template let-med pTemplate="body">
+        <tr>
+          <td>{{med.medicine.name}}</td>
+          <td>{{med.dose}}</td>
+        </tr>
+      </ng-template>
+    </p-table>
+
+    <div>
+      <div *ngIf="isAdd">
+        <form [formGroup]="addForm" autocomplete="off" enctype="multipart/form-data" id="addForm" novalidate>
+
+          <div class="field">
+            <label for="med">medicine</label>
+            <p-dropdown [(ngModel)]="med" [options]="medicines" formControlName="medicine"
+                        optionLabel="name" placeholder="Select a Medicine">
+            </p-dropdown>
+          </div>
+          <div class="field">
+            <label for="dose">dose</label>
+            <input [(ngModel)]="dose" autofocus formControlName="medDose" id="dose" pInputText required type="text"/>
+          </div>
+        </form>
+      </div>
+      <button (click)="add()" class="p-button-text" icon="pi pi-check" label="Add Medicine" pButton pRipple
+              type="submit"></button>
+
+    </div>
+
+    <button (click)="save()" class="p-button-text" icon="pi pi-check" label="Save" pButton pRipple></button>
+
+  </form>
+</div>
+
+

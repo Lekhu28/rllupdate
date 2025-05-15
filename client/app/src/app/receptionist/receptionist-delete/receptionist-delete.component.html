@@ -1,0 +1,25 @@
+<app-receptionist-list></app-receptionist-list>
+<!-- Modal HTML -->
+<div class="modal fade" id="myModal">
+  <div class="modal-dialog modal-confirm">
+    <div class="modal-content">
+      <div class="modal-header flex-column">
+        <div class="icon-box">
+          <i class="pi pi-times"></i>
+        </div>
+        <h4 class="modal-title">Are you sure?</h4>
+        <button (click)="goBack()" aria-label="Close" class="btn-close close" data-bs-dismiss="modal"
+                type="button"></button>
+      </div>
+      <div class="modal-body">
+        <p>Do you really want to delete this receptionist? This process cannot be undone.</p>
+      </div>
+      <div class="modal-footer">
+        <button (click)="goBack()" aria-label="Close" class="btn btn-secondary" data-bs-dismiss="modal" type="button">
+          Cancel
+        </button>
+        <button (click)="delete()" class="btn btn-danger" type="button">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>

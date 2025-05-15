@@ -1,0 +1,139 @@
+* {
+  font-size: 0.95rem;
+}
+
+.p-datatable .p-datatable-header {
+  background-color: white;
+  border: none;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+}
+
+.p-datatable .p-datatable-header button, .p-datatable .p-datatable-header input {
+  height: 34px;
+}
+
+.p-datatable .p-datatable-tbody > tr {
+  border: none;
+  background-color: white !important;
+}
+
+.p-datatable .p-datatable-thead {
+  padding: 5px;
+}
+
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+th .flex {
+  flex-direction: column;
+}
+
+.label {
+  margin-left: 10px;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  padding: 0;
+}
+
+.addBtn {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  position: fixed;
+  top: 88vh;
+  right: 2vw;
+  border-radius: 50%;
+  background-color: #ff4081;
+  border-color: #ff4081;
+}
+
+.addBtn:hover {
+  background-color: #ff5c92 !important;
+  border-color: #ff5c92 !important;
+}
+
+.pi-user-plus {
+  position: absolute;
+  font-size: 1.5rem;
+  top: 15px;
+  left: 17px;
+}
+
+.img {
+  width: 50px;
+  height: 50px;
+}
+
+th, td {
+  padding: 0 10px !important;
+  margin: 0 !important;
+  height: 50px !important;
+}
+
+.p-button-rounded.p-button-success {
+  margin-right: 10px;
+}
+
+.actionBut {
+  min-width: 120px !important;
+}
+
+.p-datatable .p-datatable-thead > tr > th {
+  /* color: white !important; */
+  text-align: left !important;
+  background-color: var(--base) !important;
+}
+
+.p-datatable .p-datatable-tbody > tr, .p-datatable .p-datatable-thead > tr {
+  border-bottom: 2px solid white;
+  transition: box-shadow 0.3s, transform 0.3s;
+}
+
+.p-datatable .p-datatable-tbody > tr:hover {
+  box-shadow: 0 0 10px #0000001f;
+  transform: scale(1);
+  z-index: 1;
+}
+
+.pi-sort-alt:before, .pi-filter-icon:before {
+  /* color: white; */
+  font-size: 0.8rem;
+}
+
+.pi-sort-amount-up-alt:before, .pi-sort-amount-down:before {
+  /* color: white; */
+}
+
+.p-button.p-button-icon-only {
+  width: 2rem !important;
+  height: 2rem !important;
+}
+
+.p-paginator-bottom.p-paginator.p-component.ng-star-inserted {
+  border-bottom: none;
+}
+
+.img {
+  /* border: 1px solid black !important; */
+  width: 40px;
+  height: 40px;
+  border-radius: 50% !important;
+}
+
+
+@media all and (max-width: 600px) {
+  .p-input-icon-left {
+    margin-top: 0.5rem;
+  }
+
+  .p-input-icon-left, .p-button-outlined {
+    width: 100%;
+  }
+}
