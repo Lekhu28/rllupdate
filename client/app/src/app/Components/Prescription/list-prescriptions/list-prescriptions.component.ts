@@ -102,8 +102,7 @@ export class ListPrescriptionsComponent implements OnInit {
         this.prescriptionService.deleteprescription(this.prescriptionService.id).subscribe(() => {
         });
 
-        // this.products = this.products.filter(val => val.id !== product.id);
-        // this.product = {};
+    
         this.reloadData();
         this.messageService.add({
           severity: 'success',

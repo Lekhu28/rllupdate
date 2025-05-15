@@ -7,7 +7,8 @@ import {Pipe, PipeTransform} from '@angular/core';
 export class PhoneNumberPipe implements PipeTransform {
 
   transform(value: string): string {
-        return value.replace(/^(\d{2})(\d{8})$/, '$1-$2');
+        return value.replace(/^91(\d{0,10})$/, '91-$1')
+;
   }
 
 }

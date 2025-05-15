@@ -125,7 +125,6 @@ export class AddPrescriptionComponent implements OnInit {
       medicine: ['', Validators.required],
       medicines: ['',
         Validators.required,
-        // Validators.minLength(8),
       ],
     });
     this.addForm = this.formBuilder.group({

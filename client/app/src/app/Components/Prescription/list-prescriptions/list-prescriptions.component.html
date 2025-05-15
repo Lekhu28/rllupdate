@@ -44,7 +44,7 @@
     </ng-template>
     <ng-template let-prescription pTemplate="body">
       <tr>
-        <td>{{prescription.date}}</td>
+        <td>{{prescription.date | date :"mediumDate"}}</td>
         <td>{{prescription.doctor._id.firstName + " " + prescription.doctor._id.lastName}}</td>
         <td>{{prescription.patient.first_name + " " + prescription.patient.last_name}}</td>
         <td>

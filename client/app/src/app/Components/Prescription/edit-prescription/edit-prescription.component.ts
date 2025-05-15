@@ -135,16 +135,7 @@ export class EditPrescriptionComponent implements OnInit {
   }
 
   formValidation() {
-    // this.form = this.formBuilder.group({
-    //   doctor: ['', Validators.required],
-    //   date: ['', Validators.required],
-    //   patient: ['', Validators.required],
-    //   medicine: ['', Validators.required],
-    //   medicines: ['',
-    //     Validators.required,
-    //     // Validators.minLength(8),
-    //   ],
-    // });
+   
     this.addForm = this.formBuilder.group({
       medDose: ['', [
         Validators.required,

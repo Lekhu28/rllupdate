@@ -30,8 +30,8 @@
     <span class="w-100 my-2">
             <label class="mx-1 mb-1 fw-bold" for="float-input">Phone number</label>
             <input [(ngModel)]="eDoctor._id.phoneNumber" class="p-inputtext-sm w-100 rounded-pill bg-inp" formControlName="phoneNumber"
-                   id="float-input" maxlength="11"
-                   minlength="11" pInputText type="text">
+                   id="float-input" maxlength="12"
+                   minlength="12" pInputText type="text">
       <!-- <label for="float-input" class="mx-2">Phone number</label> -->
         </span>
     <div class="row my-2">
@@ -74,10 +74,24 @@
             <input [(ngModel)]="eDoctor._id.address" class="p-inputtext-sm w-100 rounded-pill bg-inp"
                    formControlName="address" id="float-input"
                    minlength="3" pInputText type="text">
-      <!-- <label for="float-input" class="mx-2">Address</label> -->
+      
         </span>
   </form>
   <button (click)="update()" [disabled]="editForm.pristine || editForm.invalid" class="btn btn-info mt-3 w-100"
           type="submit"> Save changes
   </button>
+  <!-- Appointments Section -->
+<div class="mt-5">
+  <h4 class="fw-bold">My Appointments</h4>
+  <div *ngIf="appointments.length === 0" class="text-muted mt-2">
+    No appointments found.
+  </div>
+  <div *ngFor="let appointment of appointments" class="card p-3 my-2 shadow-sm">
+    <div><strong>Patient Name:</strong> {{ appointment.patientName }}</div>
+    <div><strong>Date:</strong> {{ appointment.date | date: 'mediumDate' }}</div>
+    <div><strong>Time:</strong> {{ appointment.time }}</div>
+    <div><strong>Reason:</strong> {{ appointment.reason }}</div>
+  </div>
+</div>
+
 </div>

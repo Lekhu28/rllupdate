@@ -13,7 +13,7 @@ import { LoginComponent } from "./login/login.component";
 import { Role } from "./_models/role";
 import { DoctorPatientsComponent } from './doctor-patients/doctor-patients.component';
 import { BookAppointmentComponent } from './appointments/book-appointment/book-appointment.component'; // ✅ Added this
-
+import { DoctorListComponent } from './doctor/doctor-list/doctor-list.component';
 const routes: Routes = [
   {
     path: '',
@@ -59,6 +59,10 @@ const routes: Routes = [
   },
   { path: "DoctorProfile/:id", component: DoctorProfileComponent },
   { path: "DoctorPatient/:id", component: DoctorPatientsComponent },
+{
+  path: 'doctors',
+  component: DoctorListComponent // or whatever component shows the list of doctors
+},
 
   // ✅ Appointment booking route
   {

@@ -17,9 +17,9 @@ import {InputNumberModule} from 'primeng/inputnumber';
 
 
 const routes: Routes = [
-  {path: "", component: DoctorListComponent},
+  {path: '', component: DoctorListComponent},
   {path: "add", component: DoctorAddComponent},
-  //{path:"details",component:DoctorDetailsComponent},
+  // {path:"details",component:DoctorDetailsComponent},
   {path: "edit/:id", component: DoctorEditComponent},
   {path: "delete/:id", component: DoctorDeleteComponent},
 ]
@@ -43,7 +43,8 @@ const routes: Routes = [
     InputNumberModule,
     ReactiveFormsModule,
     RouterModule.forChild(routes)
-  ]
+  ],
+  exports: [RouterModule]
 })
 
 

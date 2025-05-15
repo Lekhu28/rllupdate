@@ -2,9 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ReceptionistService } from '../receptionist.service';  // You need this service
+import { ReceptionistService } from '../receptionist.service';
 import { User } from '../_models/user';
-import { Receptionist } from '../_models/receptionist';
+import { DoctorService } from '../Services/doctor.service';
 
 @Component({
   selector: 'app-receptionist-profile',
@@ -19,18 +19,21 @@ export class ReceptionistProfileComponent implements OnInit {
 
   genders: any = [];
 
+  doctors: any[] = [];
+
   image!: File;
 
   constructor(
-    private recSer: ReceptionistService,  // Your receptionist API service
+    private recSer: ReceptionistService,
     public router: Router,
     public ar: ActivatedRoute,
     private fb: FormBuilder,
-    public http: HttpClient
+    public http: HttpClient,
+    private doctorService: DoctorService,
   ) {}
 
   ngOnInit(): void {
-
+    this.loadDoctors();
     this.createFormValidation();
 
     this.ar.params.subscribe(params => {
@@ -41,10 +44,18 @@ export class ReceptionistProfileComponent implements OnInit {
       });
     });
 
-    this.genders = this.recSer.genders; // Define genders array in ReceptionistService
+    this.genders = this.recSer.genders;
   }
 
-  // Form validations for receptionist fields
+  // Load list of doctors for display or selection if needed
+  loadDoctors() {
+    this.doctorService.getAllDoctors().subscribe({
+      next: (doctors) => this.doctors = doctors,
+      error: (err) => console.error("Failed to load doctors", err)
+    });
+  }
+
+  // Reactive form validation setup
   createFormValidation() {
     this.editForm = this.fb.group({
       firstName: ['', [
@@ -93,9 +104,9 @@ export class ReceptionistProfileComponent implements OnInit {
           next: (response) => {
             console.log(response);
             this.receptionist.profileImg = response.image; // Assuming backend sends image path as response.image
-          }
+          },
+          error: (err) => console.error('Image upload failed', err)
         });
     }
   }
-
 }

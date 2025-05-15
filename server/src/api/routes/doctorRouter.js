@@ -24,7 +24,7 @@ router.post(
     body("_id.lastName").isAlpha().withMessage("Last name should be string"),
     body("_id.phoneNumber")
       .isInt()
-      .isLength({ min: 11, max: 11 })
+      .isLength({ min: 12, max: 12 })
       .withMessage("Invalid phone number")
       .custom((value, { req }) => {
         return User.findOne({
@@ -80,7 +80,7 @@ router.put(
     body("_id.lastName").isAlpha().withMessage("Last name should be string"),
     body("_id.phoneNumber")
       .isInt()
-      .isLength({ min: 11, max: 11 })
+      .isLength({ min: 12, max: 12 })
       .withMessage("Invalid phone number")
       .custom((value, { req }) => {
         return User.findOne({
