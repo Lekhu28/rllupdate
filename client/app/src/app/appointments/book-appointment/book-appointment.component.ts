@@ -9,19 +9,29 @@ export class BookAppointmentComponent {
   appointment = {
     firstName: '',
     lastName: '',
-    age: null,
+    age: null as number | null,
     contact: '',
     doctorName: '',
     address: ''
   };
 
   successMessage = '';
+  contactPattern = /^91\d{8,}$/;  // Starts with 91 + at least 8 more digits
 
   onSubmit() {
-    console.log('Appointment Booked:', this.appointment);
+    if (!this.contactPattern.test(this.appointment.contact)) {
+      alert('Contact number must start with "91" and have at least 10 digits total.');
+      return;
+    }
+
+    // Save to localStorage
+    const savedAppointments = JSON.parse(localStorage.getItem('appointments') || '[]');
+    savedAppointments.push(this.appointment);
+    localStorage.setItem('appointments', JSON.stringify(savedAppointments));
+
     this.successMessage = 'Appointment booked successfully!';
-    
-    // Optional: Reset the form
+
+    // Reset form
     this.appointment = {
       firstName: '',
       lastName: '',
