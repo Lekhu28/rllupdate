@@ -78,6 +78,8 @@ import {
   WeekService,
   WorkWeekService
 } from "@syncfusion/ej2-angular-schedule";
+import { BookAppointmentComponent } from './appointments/book-appointment/book-appointment.component';
+import { AppointmentlistComponent } from './appointments/appointmentlist/appointmentlist.component';
 
 @NgModule({
   declarations: [
@@ -107,6 +109,8 @@ import {
 
     PatientReportComponent,
       ReportInvoicesComponent,
+      BookAppointmentComponent,
+      AppointmentlistComponent,
   ],
   imports: [
     AppRoutingModule,

@@ -14,33 +14,34 @@
     <a mat-button routerLink="prescriptions">Prescriptions</a>
   </div>
 
-  <!-- Receptionist sees Doctor links only -->
+  <!-- Receptionist Links -->
   <div *ngIf="isReceptionist">
-    <a [routerLink]="['DoctorProfile', user._id]" mat-button>
-      <mat-icon>person</mat-icon>
-      Receptionist Profile
-    </a>
-    <a [routerLink]="['DoctorPatient', user._id]" mat-button>
-      <mat-icon>supervised_user_circle</mat-icon>
+     
+    <a mat-button routerLink="/patient">
+      <mat-icon>people</mat-icon>
       Patients
     </a>
-    <a routerLink="prescriptions" mat-button>
-      <mat-icon>assignment</mat-icon>
-      Doctor 
+    <a mat-button routerLink="/doctors">
+      <mat-icon>local_hospital</mat-icon>
+      Doctors
     </a>
+    <a mat-button routerLink="/appointments/new">
+    <mat-icon>event_available</mat-icon>
+    Book Appointment
+  </a>
   </div>
 
   <!-- Doctor Links -->
   <div *ngIf="isDoctor">
-    <a [routerLink]="['DoctorProfile', user._id]" mat-button>
+    <a [routerLink]="['/DoctorProfile', user._id]" mat-button>
       <mat-icon>person</mat-icon>
       Doctor Profile
     </a>
-    <a [routerLink]="['DoctorPatient', user._id]" mat-button>
-      <mat-icon>supervised_user_circle</mat-icon>
+    <a mat-button routerLink="/patient">
+      <mat-icon>people</mat-icon>
       Patients
     </a>
-    <a routerLink="prescriptions" mat-button>
+    <a routerLink="/prescriptions" mat-button>
       <mat-icon>assignment</mat-icon>
       Doctor Prescriptions
     </a>
