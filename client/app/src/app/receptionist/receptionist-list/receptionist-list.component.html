@@ -1,0 +1,143 @@
+<div class="card">
+
+  <p-table #dt1 [filterDelay]="0" [globalFilterFields]="['firstName', 'lastName','phoneNumber','email','address', 'gender', 'age']" [loading]="loading" [paginator]="true"
+           [rowsPerPageOptions]="[10,25,50]" [rows]="10" [showCurrentPageReport]="true" [value]="receptionists"
+           class="m-3" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+           dataKey="id"
+           responsiveLayout="scroll">
+    <ng-template pTemplate="caption">
+      <div class="text-center">
+        <h3>Receptionists</h3>
+      </div>
+      <div class="flex justify-content-between align-items-center">
+        
+        <span class="p-input-icon-left ml-auto mx-2">
+                    <i class="pi pi-search"></i>
+                    <input (input)="dt1.filterGlobal(getEventValue($event), 'contains')" class="w-100" pInputText
+                           placeholder="Search keyword" type="text"/>
+                </span>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+      <tr>
+        <th [style]="{'text-align':'left'}" class="label">
+          <div class="flex justify-content-center align-items-left">
+            Photo
+          </div>
+        </th>
+        <th class="th" pSortableColumn="firstName">
+          <div class="flex justify-content-center align-items-left">
+            <div class="label">
+              Name
+            </div>
+            <div class="flex-row">
+              <p-sortIcon field="firstName"></p-sortIcon>
+           
+            </div>
+          </div>
+        </th>
+        <th class="th" pSortableColumn="phoneNumber">
+          <div class="flex justify-content-center align-items-left">
+            <diV class="label">
+              Phone
+            </diV>
+            <div class="flex-row">
+              <p-sortIcon field="phoneNumber"></p-sortIcon>
+          
+            </div>
+          </div>
+        </th>
+        <th class="th" pSortableColumn="email">
+          <div class="flex justify-content-center align-items-left">
+            <div class="label">
+              Email
+            </div>
+            <div class="flex-row">
+              <p-sortIcon field="email"></p-sortIcon>
+            </div>
+          </div>
+        </th>
+        <th class="th" pSortableColumn="address">
+          <div class="flex justify-content-center align-items-left">
+            <div class="label">
+              Address
+            </div>
+            <div class="flex-row">
+              <p-sortIcon field="address"></p-sortIcon>
+        
+            </div>
+          </div>
+        </th>
+        <th class="th" pSortableColumn="age">
+          <div class="flex justify-content-center align-items-left">
+            <div class="label">
+              Age
+            </div>
+            <div class="flex-row">
+              <p-sortIcon field="age"></p-sortIcon>
+              
+            </div>
+          </div>
+        </th>
+        <th class="th" pSortableColumn="gender">
+          <div class="flex justify-content-center align-items-left">
+            <div class="label">
+              Gender
+            </div>
+            <div class="flex-row">
+              <p-sortIcon field="gender"></p-sortIcon>
+     
+            </div>
+          </div>
+        </th>
+        <th class="th">
+          <div class="flex justify-content-center align-items-center">
+            Actions
+          </div>
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template let-receptionist pTemplate="body">
+      <tr class="bg-light">
+        <td class="images">
+          <img alt="" class="img" src="{{ '../../../assets/' + receptionist.profileImg }}"/>
+        </td>
+        <td class=" text-black">
+          {{receptionist.firstName + " " + receptionist.lastName}}
+        </td>
+        <td class=" text-black text-blue-200">
+          <i aria-hidden="true" class="fa fa-mobile"></i>
+          {{receptionist.phoneNumber}}
+        </td>
+        <td class=" text-black">
+          {{receptionist.email}}
+        </td>
+        <td class=" text-black">
+          {{receptionist.address}}
+        </td>
+        <td class=" text-black">
+          {{receptionist.age}}
+        </td>
+        <td class=" text-black">
+          <span [class]="'receptionist-badge gender-' + receptionist.gender">{{receptionist.gender}}</span>
+        </td>
+        <td class="text-center actionBut">
+          <button (click)="edit(receptionist._id)" class="p-button-rounded p-button-success" icon="pi pi-pencil" pButton
+                  pRipple></button>
+          <button (click)="delete(receptionist._id)" class="p-button-rounded p-button-warning" icon="pi pi-trash" pButton
+                  pRipple></button>
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="emptymessage">
+      <tr>
+        <td colspan="8">No receptionists found.</td>
+      </tr>
+    </ng-template>
+  </p-table>
+
+  <button (click)="add()" class="p-button-lg addBtn" pButton type="button">
+    <i class="pi pi-user-plus"></i>
+  </button>
+
+</div>

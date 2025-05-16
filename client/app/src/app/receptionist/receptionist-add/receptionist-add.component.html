@@ -1,0 +1,89 @@
+<app-receptionist-list></app-receptionist-list>
+<!-- Modal HTML -->
+<div class="modal fade" data-bs-backdrop="static" id="myModal">
+  <div class="modal-dialog modal-confirm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title fs-3">Add receptionist</h4>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="addForm" autocomplete="off" enctype="multipart/form-data"
+              id="editForm" method="post" novalidate>
+          <div class="row flex-nowrap align-items-center mb-4 mx-2">
+            <img alt="" class="img" src="{{ '../../../assets/' + newReceptionist.profileImg }}"/>
+            <div class="fileinputs">
+              <input (change)="selectFile($event)" class="file" id="profileImg" name="profileImg" type="file"/>
+              <div class="fakefile row flex-nowrap align-items-center text-center">
+                <span>Select image <i aria-hidden="true" class="fa fa-user fs-5 mx-1"></i></span>
+              </div>
+            </div>
+          </div>
+          <div class="row my-4" id="name">
+                        <span class="p-float-label w-50">
+                            <input [(ngModel)]="newReceptionist.firstName"
+                                   class="p-inputtext-sm w-100 rounded-pill bg-inp" formControlName="firstName"
+                                   id="float-input" pInputText type="text">
+                            <label class="mx-3" for="float-input">First name</label>
+                        </span>
+            <span class="p-float-label w-50">
+                            <input [(ngModel)]="newReceptionist.lastName"
+                                   class="p-inputtext-sm w-100 rounded-pill bg-inp" formControlName="lastName"
+                                   id="float-input" pInputText type="text">
+                            <label class="mx-3" for="float-input">Last name</label>
+                        </span>
+          </div>
+          <span class="p-float-label w-100 my-4">
+                        <input [(ngModel)]="newReceptionist.phoneNumber" class="p-inputtext-sm w-100 rounded-pill bg-inp" formControlName="phoneNumber"
+                               id="float-input" maxlength="12"
+                               minlength="12" pInputText type="text">
+                        <label class="mx-2" for="float-input">Phone number</label>
+                    </span>
+          <div class="row my-4" id="name">
+                        <span class="p-float-label w-50">
+                            <input [(ngModel)]="newReceptionist.age"
+                                   class="p-inputtext-sm w-100 rounded-pill bg-inp" formControlName="age"
+                                   id="float-input" pInputText type="text">
+                            <label class="mx-4" for="float-input">Age</label>
+                        </span>
+            <span class="p-float-label w-50">
+                            <p-dropdown [(ngModel)]="newReceptionist.gender"
+                                        [autoDisplayFirst]="false" [options]="genders" [style]="{'width':'100%'}"
+                                        autoWidth="false" class="p-inputtext-sm w-100" formControlName="gender"
+                                        inputId="dropdown"
+                                        styleClass="inp-form">
+                            </p-dropdown>
+                            <label class="mx-3" for="dropdown">Gender</label>
+                        </span>
+          </div>
+          <span class="p-float-label w-100 my-4">
+                        <input [(ngModel)]="newReceptionist.email"
+                               class="p-inputtext-sm w-100 rounded-pill bg-inp" formControlName="email"
+                               id="float-input" pInputText type="text">
+                        <label class="mx-2" for="float-input">Email</label>
+                    </span>
+          <span class="p-float-label w-100 my-4">
+                        <input [(ngModel)]="newReceptionist.password" class="p-inputtext-sm w-100 rounded-pill bg-inp"
+                               formControlName="password" id="float-input"
+                               minlength="7" pInputText type="text">
+                        <label class="mx-2" for="float-input">Password</label>
+                    </span>
+          <span class="p-float-label w-100 mt-4">
+                        <input [(ngModel)]="newReceptionist.address" class="p-inputtext-sm w-100 rounded-pill bg-inp"
+                               formControlName="address" id="float-input"
+                               minlength="3" pInputText type="text">
+                        <label class="mx-2" for="float-input">Address</label>
+                    </span>
+        </form>
+      </div>
+      <div class="modal-footer bg-light justify-content-between">
+        <button (click)="goBack()" aria-label="Close" class="btn btn-danger float-start" data-bs-dismiss="modal"
+                type="button">
+          Cancel
+        </button>
+        <button (click)="add($event)" [disabled]="addForm.pristine || addForm.invalid" class="btn btn-info"
+                type="submit"> Add receptionist
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

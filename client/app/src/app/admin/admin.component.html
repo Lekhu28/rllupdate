@@ -1,0 +1,9 @@
+<ejs-schedule [eventSettings]="eventSettings" [selectedDate]="selectedDate" height='550px' width='100%'>
+  <e-views>
+    <e-view endHour="15:00" option="Week" startHour="07:00"></e-view>
+    <!-- <e-view endHour="18:00" option="WorkWeek" startHour="10:00"></e-view> -->
+    <e-view [showWeekend]="showWeekend" option="Month"></e-view>
+    <e-view option="appointment"></e-view>
+  </e-views>
+
+</ejs-schedule>

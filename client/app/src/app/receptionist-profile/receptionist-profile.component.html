@@ -1,0 +1,77 @@
+<h4 class="modal-title fs-3 m-3 mt-4">Receptionist Profile Page</h4>
+
+<div class="m-3 mainDiv">
+  <form [formGroup]="editForm" autocomplete="off" enctype="multipart/form-data" id="editForm" novalidate>
+    <div class="row flex-nowrap align-items-center mb-4 m-2 g-0">
+      <img alt="Profile Image" class="img" [src]="'../../../assets/' + receptionist.profileImg" />
+      <div class="fileinputs">
+        <input (change)="selectFile($event)" class="file" name="profileImg" type="file" />
+        <div class="fakefile row flex-nowrap align-items-center text-center">
+          <span>Change photo <i aria-hidden="true" class="fa fa-user fs-5 mx-1"></i></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="row my-2">
+      <span class="w-50">
+        <label class="mx-1 mb-1 fw-bold" for="firstName">First name</label>
+        <input [(ngModel)]="receptionist.firstName"
+               class="p-inputtext-sm w-100 rounded-pill bg-inp"
+               formControlName="firstName" id="firstName" pInputText type="text" />
+      </span>
+      <span class="w-50">
+        <label class="mx-1 mb-1 fw-bold" for="lastName">Last name</label>
+        <input [(ngModel)]="receptionist.lastName"
+               class="p-inputtext-sm w-100 rounded-pill bg-inp"
+               formControlName="lastName" id="lastName" pInputText type="text" />
+      </span>
+    </div>
+
+    <span class="w-100 my-2">
+      <label class="mx-1 mb-1 fw-bold" for="phoneNumber">Phone number</label>
+      <input [(ngModel)]="receptionist.phoneNumber"
+             class="p-inputtext-sm w-100 rounded-pill bg-inp"
+             formControlName="phoneNumber" id="phoneNumber" maxlength="11"
+             minlength="11" pInputText type="text" />
+    </span>
+
+    <div class="row my-2">
+      <span class="w-50">
+        <label class="mx-1 mb-1 fw-bold" for="age">Age</label>
+        <input [(ngModel)]="receptionist.age"
+               class="p-inputtext-sm w-100 rounded-pill bg-inp"
+               formControlName="age" id="age" pInputText type="text" />
+      </span>
+      <span class="w-50">
+        <label class="mx-1 mb-1 fw-bold" for="gender">Gender</label>
+        <p-dropdown [(ngModel)]="receptionist.gender"
+                    [autoDisplayFirst]="false" [options]="genders"
+                    [style]="{'width':'100%'}"
+                    autoWidth="false" class="p-inputtext-sm w-100"
+                    formControlName="gender" inputId="gender"
+                    styleClass="inp-form">
+        </p-dropdown>
+      </span>
+    </div>
+
+    <span class="w-100 my-2">
+      <label class="mx-1 mb-1 fw-bold" for="email">Email</label>
+      <input [(ngModel)]="receptionist.email"
+             class="p-inputtext-sm w-100 rounded-pill bg-inp"
+             formControlName="email" id="email" pInputText type="text" />
+    </span>
+
+    <span class="w-100 my-2">
+      <label class="mx-1 mb-1 fw-bold" for="address">Address</label>
+      <input [(ngModel)]="receptionist.address"
+             class="p-inputtext-sm w-100 rounded-pill bg-inp"
+             formControlName="address" id="address"
+             minlength="3" pInputText type="text" />
+    </span>
+  </form>
+
+  <button (click)="update()" [disabled]="editForm.pristine || editForm.invalid"
+          class="btn btn-info mt-3 w-100" type="submit">
+    Save changes
+  </button>
+</div>

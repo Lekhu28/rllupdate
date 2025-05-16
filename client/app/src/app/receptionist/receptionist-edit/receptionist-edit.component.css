@@ -1,0 +1,76 @@
+.row.flex-nowrap.align-items-center.mb-4.mx-2 {
+  --bs-gutter-x: 0;
+}
+
+.img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50% !important;
+}
+
+div.fileinputs {
+  position: relative;
+}
+
+div.fakefile {
+  position: absolute;
+  top: 0px;
+  left: 30px;
+  z-index: 1;
+  width: 150px;
+  height: 35px;
+  border-radius: 7px;
+  border: 1px solid var(--primary);
+  color: var(--primary);
+  transition: all 0.3s;
+}
+
+div.fakefile:hover, input.file:hover, input[type="file"]:hover {
+  cursor: pointer;
+  background-color: var(--primary);
+  color: white;
+}
+
+input[type="file"] {
+  width: 150px;
+}
+
+input.file {
+  position: relative;
+  text-align: right;
+  opacity: 0;
+  z-index: 2;
+}
+
+.modal-header, .modal-footer {
+  border: none;
+}
+
+#myModal {
+  overflow: auto;
+}
+
+.bg-inp {
+  background-color: var(--grey);
+  border-color: var(--grey);
+}
+
+.bg-inp:focus, .p-dropdown:focus {
+  background-color: white;
+  border: 1px solid var(--primary);
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px !important;
+}
+
+label, h4 {
+  color: rgba(0, 0, 0, 0.7);
+}
+
+#dropdown {
+  background-color: white;
+  border: 1px solid var(--primary);
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px !important;
+}
+
+.bg-light {
+  background-color: var(--lightGrey) !important;
+}

@@ -1,0 +1,51 @@
+<mat-toolbar *ngIf="user" class="mat-elevation-z8" color="primary">
+  <span><mat-icon>eco</mat-icon> CLINIC SYSTEM</span>
+  <div class="spacer"></div>
+
+  <!-- Admin Links -->
+  <div *ngIf="isAdmin">
+    <a mat-button routerLink="/">Dashboard</a>
+    <a mat-button routerLink="admin">Admin</a>
+    <a mat-button routerLink="payment">Payments</a>
+    <a mat-button routerLink="receptionists">Receptionists</a>
+    <a mat-button routerLink="doctors">Doctors</a>
+    <a mat-button routerLink="medicines">Medicines</a>
+    <a mat-button routerLink="patient">Patients</a>
+    <a mat-button routerLink="prescriptions">Prescriptions</a>
+  </div>
+
+  <!-- Receptionist Links -->
+  <div *ngIf="isReceptionist">
+     
+    <a mat-button routerLink="/patient">
+      <mat-icon>people</mat-icon>
+      Patients
+    </a>
+    <a mat-button routerLink="/doctors" href="/doctors">
+      <mat-icon>local_hospital</mat-icon>
+      Doctors
+    </a>
+    <a mat-button routerLink="/appointments/new">
+    <mat-icon>event_available</mat-icon>
+    Book Appointment
+  </a>
+  </div>
+
+  <!-- Doctor Links -->
+  <div *ngIf="isDoctor">
+    <a [routerLink]="['/DoctorProfile', user._id]" mat-button>
+      <mat-icon>person</mat-icon>
+      Doctor Profile
+    </a>
+    <a mat-button routerLink="/patient">
+      <mat-icon>people</mat-icon>
+      Patients
+    </a>
+    <a routerLink="/prescriptions" mat-button>
+      <mat-icon>assignment</mat-icon>
+      Doctor Prescriptions
+    </a>
+  </div>
+
+  <a (click)="logout()" color="accent" mat-raised-button routerLink="signup">Logout</a>
+</mat-toolbar>

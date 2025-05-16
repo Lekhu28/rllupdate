@@ -1,0 +1,44 @@
+<h1 mat-dialog-title> Add Payment </h1>
+<div mat-dialog-content>
+  <form [formGroup]="paymentForm">
+    <mat-form-field appearance="outline">
+      <mat-label>Patient</mat-label>
+      <mat-select formControlName="patient" placeholder="Select Patient">
+        <mat-option *ngFor="let patient of patients" value={{patient._id}}>
+          {{patient.first_name + " " + patient.last_name}}
+        </mat-option>
+
+      </mat-select>
+      <mat-icon matSuffix> person_pin</mat-icon>
+    </mat-form-field>
+
+  <mat-form-field appearance="outline">
+  <mat-label>Amount</mat-label>
+  <input formControlName="amount" matInput placeholder="Enter amount" type="number">
+  <mat-icon matSuffix>₹</mat-icon>
+</mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Method</mat-label>
+      <mat-select formControlName="method" placeholder="Method of Payment">
+        <mat-option value="cash_card">
+          Cash Card
+        </mat-option>
+        <mat-option value="credit_card">
+          Credit Card
+        </mat-option>
+        <mat-option value="insurance_card">
+          Insurance Card
+        </mat-option>
+      </mat-select>
+      <mat-icon matSuffix>payment</mat-icon>
+    </mat-form-field>
+
+
+  </form>
+</div>
+<div [align]="'end'" mat-dialog-actions>
+  <button color="warn" mat-dialog-close mat-raised-button> Close</button>
+  <button (click)="addPayment()" color="primary" mat-raised-button> {{actionBtn}}</button>
+</div>
+

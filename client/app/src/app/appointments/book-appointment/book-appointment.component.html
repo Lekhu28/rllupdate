@@ -1,0 +1,97 @@
+<div class="container">
+  <h2>Book Appointment</h2>
+
+  <form (ngSubmit)="onSubmit()" #appointmentForm="ngForm" novalidate>
+
+    <div>
+      <label>First Name:</label>
+      <input
+        type="text"
+        name="firstName"
+        [(ngModel)]="appointment.firstName"
+        required
+        #firstName="ngModel"
+      />
+      <div *ngIf="firstName.invalid && firstName.touched" style="color:red;">
+        First name is required.
+      </div>
+    </div>
+
+    <div>
+      <label>Last Name:</label>
+      <input
+        type="text"
+        name="lastName"
+        [(ngModel)]="appointment.lastName"
+        required
+        #lastName="ngModel"
+      />
+      <div *ngIf="lastName.invalid && lastName.touched" style="color:red;">
+        Last name is required.
+      </div>
+    </div>
+
+    <div>
+      <label>Age:</label>
+      <input
+        type="number"
+        name="age"
+        [(ngModel)]="appointment.age"
+        required
+        min="0"
+        #age="ngModel"
+      />
+      <div *ngIf="age.invalid && age.touched" style="color:red;">
+        Age is required and must be positive.
+      </div>
+    </div>
+
+    <div>
+      <label>Contact Number:</label>
+      <input
+        type="text"
+        name="contact"
+        [(ngModel)]="appointment.contact"
+        required
+        pattern="^91\d{8,}$"
+        #contact="ngModel"
+      />
+      <div *ngIf="contact.invalid && contact.touched" style="color:red;">
+        Contact must start with 91 and have minimum 10 digits.
+      </div>
+    </div>
+
+    <div>
+      <label>Doctor Name:</label>
+      <input
+        type="text"
+        name="doctorName"
+        [(ngModel)]="appointment.doctorName"
+        required
+        #doctorName="ngModel"
+      />
+      <div *ngIf="doctorName.invalid && doctorName.touched" style="color:red;">
+        Doctor name is required.
+      </div>
+    </div>
+
+    <div>
+      <label>Address:</label>
+      <textarea
+        name="address"
+        [(ngModel)]="appointment.address"
+        required
+        #address="ngModel"
+      ></textarea>
+      <div *ngIf="address.invalid && address.touched" style="color:red;">
+        Address is required.
+      </div>
+    </div>
+
+    <button type="submit" [disabled]="appointmentForm.invalid">Submit</button>
+  </form>
+
+  <div *ngIf="successMessage" style="color:green; margin-top:10px;">
+    {{ successMessage }}
+  </div>
+</div>
