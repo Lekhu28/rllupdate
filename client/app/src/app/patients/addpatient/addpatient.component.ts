@@ -13,11 +13,11 @@ import { HttpClient } from '@angular/common/http';
 
 export class AddpatientComponent implements OnInit {
   angForm: FormGroup | any;
-  newPatient: Patient = new Patient(0, '', '', '', 1, '', '', null, []);
+  newPatient: Patient = new Patient('', '', '', '', 1, '', '', 'blank.jpg', []);
   errormessage: string | any;
 
 
-  fileName: string | any = "user.png";
+  fileName!: File;
 
   constructor(private patser: PatientService, private router: Router, private fb: FormBuilder, private http: HttpClient) {
     this.createForm();
@@ -118,13 +118,10 @@ export class AddpatientComponent implements OnInit {
 
       this.fileName = file;
 
-
-
-
       const formData = new FormData();
       formData.append('file', this.fileName);
 
-      this.http.post<any>('http://localhost:3000/patient/file', formData).subscribe(
+      this.http.post<any>('http://localhost:3000/patient/', formData).subscribe(
         {
           next: (a) => {
 

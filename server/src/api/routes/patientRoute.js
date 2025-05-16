@@ -7,7 +7,7 @@ const multer = require("multer");
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
    
-    cb(null,"./../client/client/src/assets");
+    cb(null,"./../client/app/src/assets");
   },
   filename: (req, file, cb) => {
     cb(
@@ -19,8 +19,10 @@ const storage = multer.diskStorage({
   },
 });
 const upload = multer({ storage: storage }).single('file');
-router.route("/patient");
-router.post('/file', upload, (req, res, next) => {
+
+
+
+router.post('', upload, (req, res, next) => {
     const file = req.file;
     
     if (!file) {
@@ -62,9 +64,11 @@ router.get("/:_id",[param("_id").isMongoId().withMessage("_id Should be ObjectID
 router.put("/addDoctortoPatient",
 [body("_id").isMongoId().withMessage("patientID should be objectID "),
 body("doctor").isMongoId().withMessage("DoctorID should be objectID ")],controller.addDoctortoPatient);
+
 router.put("/addAppointmenttoPatient",
 [body("_id").isMongoId().withMessage("patientID should be objectID "),
 body("appointment").isMongoId().withMessage("Appointment ID should be objectID ")],controller.addAppointmenttoPatient);
+
 router.put("/addPrescriptiontoPatient",
 [body("_id").isMongoId().withMessage("patientID should be objectID "),
 body("prescription").isMongoId().withMessage(" Prescriptions ID should be objectID ")],controller.addPrescriptiontoPatient);
@@ -72,9 +76,11 @@ body("prescription").isMongoId().withMessage(" Prescriptions ID should be object
 router.put("/deleteDoctorfromPatient",
 [body("_id").isMongoId().withMessage("patientID should be objectID "),
 body("doctor").isMongoId().withMessage("DoctorID should be objectID ")],controller.deleteDoctorfromPatient);
+
 router.put("/deleteAppointmentfromPatient",
 [body("_id").isMongoId().withMessage("patientID should be objectID "),
 body("appointment").isMongoId().withMessage("Appointment ID should be objectID ")],controller.deleteAppointmentfromPatient);
+
 router.put("/deletePrescriptionfromPatient",
 [body("_id").isMongoId().withMessage("patientID should be objectID "),
 body("prescription").isMongoId().withMessage(" Prescriptions ID should be objectID ")],controller.deletePrescriptionfromPatient);

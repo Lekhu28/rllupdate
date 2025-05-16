@@ -24,9 +24,9 @@ const upload = multer({ storage: storage }).single("file");
 router.post(
   "",
   upload,
-  function(request, response, next) {
+  function(req, res, next) {
     
-    const file = request.file.filename;
+    const file = req.file.filename;
 
     if (!file) {
       const error = new Error('No File')
@@ -34,7 +34,7 @@ router.post(
       return next(error)
     }
     
-    response.json({"image": request.file.filename})
+    response.json({"image": req.file.filename})
   }
 );
 

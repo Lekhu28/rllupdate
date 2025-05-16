@@ -14,7 +14,7 @@ export class ReceptionistAddComponent implements OnInit {
 
   addForm: FormGroup | any;
 
-  newReceptionist: User = new User("", "", "", "", 20, "", "", "blank.jpg", "Doctor", "male", "")
+  newReceptionist: User = new User("", "", "", "", 20, "", "", "blank.jpg", "Receptionist", "", "")
 
   genders: any = [];
 

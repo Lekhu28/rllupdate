@@ -32,7 +32,7 @@ export class ListpatientComponent implements OnInit {
         this.loading = false;
 
          
-        this.imagePath = this.displayImage(this.patlist[6].profile_img);
+        // this.imagePath = this.displayImage(this.patlist[6].profile_img);
       },
     });
   }
